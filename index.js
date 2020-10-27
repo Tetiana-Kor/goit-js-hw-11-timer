@@ -24,6 +24,12 @@ class CountdownTimer {
       const deltaTime = this.targetDate - currentTime;
       const time = this.getTimeComponents(deltaTime);
       this.updateTime(time);
+
+      if (deltaTime <= 0) {
+        clearInterval(this.intervalId);
+        this.init();
+        return;
+      }
     }, 1000);
   }
 
@@ -52,7 +58,7 @@ class CountdownTimer {
 
 const timer = new CountdownTimer({
   selector: '#timer-1',
-  targetDate: new Date('Nov 15, 2020 11:36 AM'),
+  targetDate: new Date('Nov 15, 2012 11:36 AM'),
 });
 
 /*
